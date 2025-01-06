@@ -60,3 +60,96 @@ const rounds = input.split("\n");
 // Calculate and log the total score
 const totalScore = calculateScore(rounds);
 console.log("Total Score:", totalScore);
+
+//TIME COMPLEXITY O(n)
+//SPACE COMPLEXITY O(n) 
+
+/*--- Part Two ---
+*The Elf finishes helping with the tent and sneaks back over to you.
+*"Anyway, the second column says how the round needs to end: X means you need to lose, Y means you need to end the round in a draw, and Z means you need to win. Good luck!"
+*The total score is still calculated in the same way, but now you need to figure out what shape to choose so the round ends as indicated. The example above now goes like this:
+*    In the first round, your opponent will choose Rock (A), and you need the round to end in a draw (Y), so you also choose Rock. This gives you a score of 1 + 3 = 4.
+*    In the second round, your opponent will choose Paper (B), and you choose Rock so you lose (X) with a score of 1 + 0 = 1.
+*    In the third round, you will defeat your opponent's Scissors with Rock for a score of 1 + 6 = 7.
+*Now that you're correctly decrypting the ultra top secret strategy guide, you would get a total score of 12.
+*Following the Elf's instructions for the second column, what would your total score be if everything goes exactly according to your strategy guide?
+*The task is to determine the appropriate shape to choose based on the desired round outcome. The outcomes are:
+*    X: You need to lose.
+*    Y: You need to draw.
+*    Z: You need to win.
+*We need to map the opponent's move and the desired outcome to the shape you should choose, then calculate the total score.
+*Mapping Moves and Outcomes:
+*        Map opponent's move (A, B, C) to its corresponding shape (Rock, Paper, Scissors).
+*        Define rules to determine your move based on the opponent's move and the desired outcome (X, Y, Z).
+*Calculate Scores:
+*        For each round, compute the score as the sum of:
+*        The score for the shape you choose.
+*        The score for the outcome (0, 3, or 6).
+*Input Handling:
+*        Ignore empty lines in the input.*/
+
+function calculateScoreWithOutcome(strategyGuide) {
+    // Points for the shape
+    const shapeScores = {
+        'Rock': 1,
+        'Paper': 2,
+        'Scissors': 3
+    };
+
+    // Mapping opponent moves
+    const moves = {
+        'A': 'Rock',     // Rock
+        'B': 'Paper',    // Paper
+        'C': 'Scissors'  // Scissors
+    };
+
+    // Rules for determining your move based on the desired outcome
+    const rules = {
+        'Rock': { 'X': 'Scissors', 'Y': 'Rock', 'Z': 'Paper' },
+        'Paper': { 'X': 'Rock', 'Y': 'Paper', 'Z': 'Scissors' },
+        'Scissors': { 'X': 'Paper', 'Y': 'Scissors', 'Z': 'Rock' }
+    };
+
+    // Points for the outcome
+    const outcomeScores = {
+        'X': 0, // Loss
+        'Y': 3, // Draw
+        'Z': 6  // Win
+    };
+
+    let totalScore = 0;
+
+    for (const round of strategyGuide) {
+        // Skip empty lines
+        if (!round.trim()) continue;
+
+        const [opponentMove, desiredOutcome] = round.split(" ");
+
+        // Get opponent's move and desired outcome
+        const opponentShape = moves[opponentMove];
+        const yourShape = rules[opponentShape][desiredOutcome];
+
+        // Calculate the score for this round
+        const shapeScore = shapeScores[yourShape];
+        const outcomeScore = outcomeScores[desiredOutcome];
+        totalScore += shapeScore + outcomeScore;
+    }
+
+    return totalScore;
+}
+
+// Example input
+const input = `A Y
+B X
+C Z
+`; // Replace this with your actual input
+
+// Parse the input into an array of rounds
+const rounds = input.split("\n");
+
+// Calculate and log the total score
+const totalScore = calculateScoreWithOutcome(rounds);
+console.log("Total Score:", totalScore);
+
+//TIME COMPLEXITY O(n)
+//SPACE COMPLEXITY O(1)
