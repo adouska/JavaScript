@@ -1,0 +1,24 @@
+var stringMatching = function(words) {
+    // Sort words by length (shortest to longest)
+    words.sort((a, b) => a.length - b.length);
+    let stringArray = [];
+
+    // Use two pointers: slow and quick
+    for (let slow = 0; slow < words.length; slow++) {
+        for (let quick = slow + 1; quick < words.length; quick++) {
+            // Check if the word at `slow` is a substring of the word at `quick`
+            if (words[quick].includes(words[slow])) {
+                stringArray.push(words[slow]);
+                break; // No need to check further for this word
+            }
+        }
+    }
+    return stringArray;
+};
+
+//Time Complexity: sorting -> O(nlog⁡n)
+//                 two-pointer traversal -> O)[n^2]*m) , m:average length of strings
+//                 overall: O(n^2 * m) the sorting step makes it slightly faster for certain inputs.
+//Space Complexity:sorting -> O(n)
+//                 result array takes -> O(n)
+//                 overall: O(n)
