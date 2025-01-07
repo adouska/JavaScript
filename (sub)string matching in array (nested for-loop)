@@ -1,0 +1,22 @@
+function stringMatching(words) {
+    const result = [];
+
+    // Iterate through each word to check if it's a substring of another word
+    for (let i = 0; i < words.length; i++) {
+        for (let j = 0; j < words.length; j++) {
+            if (i !== j && words[j].includes(words[i])) {
+                result.push(words[i]);
+                break; // Break early since we found it as a substring
+            }
+        }
+    }
+    return result;
+}
+
+//Time Complexity:
+//        Outer loop runs O(n),  n = length of the array
+//        Inner loop runs O(n) and the operation included takes O(m), m = average length of strings
+//        Overall complexity: O(n^2 ⋅ m)
+//Space Complexity:
+//        result array stores up to n substrings, so space usage is proportional to the size of words
+//        Overall: O(n)
