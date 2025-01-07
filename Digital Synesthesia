@@ -1,0 +1,43 @@
+/* (codewars) Setup
+*Sysnesthesia is a nuerological phenomenon where a person may experience a sensory impulse as if it had been from a different sense.
+*For example, hearing music as if seeing a series of colors.Today we will be creating a function to mimic a synesthetic experience.
+*The function will receive a string representing music, and return an array of strings representing colors.
+*To represent music as a string, we will be using the ABC music notation. This notation is a whole language,
+*but all you need to know for this kata is that it is comprised of all ASCII characters.In it's simplest usage, "ABCEFG" is an ascending scale.
+*To represent color as a string, we will use standard CSS hex notation, e.g. #FFFFFF for white. Letters are upper case.
+*  Task
+*Starting from the begining of the input string, for every three ASCII characters, include the associated color in the returned array.
+*If the input string is not evenly divisible by three, ignore any trailing characters. Empty and null input should return an empty array.
+*I define a color as being associated with three ASCII characters when each pair of hexidecimal digits in the color match 
+* the hexidecimal ASCII values of the respective characters. For example, #414243 is associated with the notes ABC.
+
+function MusicToColor(music) {
+
+    // Handle null or empty input
+    if (!music || music.length === 0) {
+        return [];
+    }
+
+    const colors = [];
+
+    // Loop through the string, taking three characters at a time
+
+    for (let i = 0; i < music.length - 2; i += 3) {
+        const chunk = music.slice(i, i + 3);
+
+        // Convert each character to its hexadecimal ASCII value
+        const color = `#${chunk
+            .split('')
+            .map(char => char.charCodeAt(0).toString(16).padStart(2, '0'))
+            .join('')
+            .toUpperCase()}`;
+        
+        colors.push(color);
+    }
+
+    return colors;
+}
+
+/* Time Complexity: loop runs for every group of 3 characters of input string. If input length = n loop runs n/3 times
+*Each group of 3 characters involves constant-time operations to convert characters to hex.  Overall: O(n)
+*  Space Complexity: colors array = n/3 colors    Overall: O(n)*/
