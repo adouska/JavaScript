@@ -1,0 +1,5 @@
+const stringMatching = words => {
+  return words.filter(n => words.some(h => h !== n && h.includes(n)));
+};
+
+//
