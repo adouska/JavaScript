@@ -9,18 +9,6 @@ function readFileIntoString(input) {
     }
 }
 
-const readFileToArray = (input) => {
-    try {
-        // Read the file content and split it by new lines
-        const data = fs.readFileSync(input, 'utf8');
-        const lines = data.split('\n').map(line => line.trim()); // Split by line and trim whitespace
-        return lines.filter(line => line.length > 0); // Remove any empty lines
-    } catch (err) {
-        console.error(`Error reading the file: ${err.message}`);
-        return [];
-    }
-};
-
 function houses() {
     const input = readFileIntoString(filePath);
     let visited  = new Set();
@@ -44,4 +32,46 @@ function houses() {
 }
 
 houses();
+
+
+//// part2 
+
+function houses2() {
+    const input = readFileIntoString(filePath);
+    let visited  = new Set();
+    let x=0;
+    let y=0;
+    let roboX =0;
+    let roboY=0;
+    visited.add(x.toString() + "," + y.toString());
+
+    for (let i=0; i<input.length; i++){
+        if (i%2===0){
+            if (input[i]==="^"){
+                y++;
+            }else if(input[i]==="v"){
+                y--;
+            }else if(input[i]===">"){
+                x++;
+            }else if(input[i]==="<"){
+                x--;
+            }
+            visited.add(x.toString() + "," + y.toString());
+        }else{
+            if (input[i]==="^"){
+                roboY++;
+            }else if(input[i]==="v"){
+                roboY--;
+            }else if(input[i]===">"){
+                roboX++;
+            }else if(input[i]==="<"){
+                roboX--;
+            }
+            visited.add(roboX.toString() + "," + roboY.toString());
+        }
+    }
+    console.log(visited.size);
+}
+
+houses2();
 
