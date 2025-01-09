@@ -30,4 +30,4 @@ function captchaSolution(input) {
     }
     return sum;
 }
-console.log(captchaSolution(input));       // Output: 3
+console.log(captchaSolution(input));
