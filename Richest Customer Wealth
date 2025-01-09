@@ -1,0 +1,25 @@
+//You are given an m x n integer grid accounts where accounts[i][j] is the amount of money the i​​​​​​​​​​​th​​​​ customer has in the j​​​​​​​​​​​th​​​​ bank.
+//Return the wealth that the richest customer has.
+//A customers wealth is the amount of money they have in all their bank accounts. The richest customer is the customer that has the maximum wealth.
+
+/**
+ * @param {number[][]} accounts
+ * @return {number}
+ */
+
+var maximumWealth = function(accounts) {
+    sum = [];
+    //sum.length = accounts.length
+    //sum.fill(0)
+    let max=0;
+    for (i=0; i<accounts.length; i++){
+        sum[i]=0
+        for(j=0; j<accounts[0].length; j++){
+            sum[i] += accounts[i][j]
+        }
+        if(sum[i]>max){
+            max = sum[i]
+        }
+    }
+    return max
+};
