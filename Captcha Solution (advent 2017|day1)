@@ -9,17 +9,25 @@
 //What is the solution to your captcha?
 
 
+const fs = require('fs');
+const filePath = 'input.txt';
+function readFile() {
+    try {
+        return fs.readFileSync(filePath, 'utf8')
+    } catch (err) {
+        console.error('Error reading the file:', err);
+    }
+}
+let input= readFile().trim();
 
 function captchaSolution(input) {
     let sum = 0;
     const n = input.length;
-
     for (let i = 0; i < n; i++) {
-        // Compare current digit with the next, wrapping around with modulo
         if (input[i] === input[(i + 1) % n]) {
             sum += parseInt(input[i], 10);
         }
     }
-
     return sum;
 }
+console.log(captchaSolution(input));       // Output: 3
