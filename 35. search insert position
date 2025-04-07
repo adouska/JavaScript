@@ -1,0 +1,26 @@
+//solution with for loop O(n)
+var searchInsert = function (nums, target) {
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] >= target) {
+            return i;
+        }
+    }
+    return nums.length;
+};
+
+//solution with binary search O(nlogn)
+var searchInsert = function(nums, target) {
+    let right = nums.length;
+    let left = 0;
+
+    while (left<right){
+        let middle = Math.floor((right+left)/2);
+
+        if (nums[middle] < target){
+            left = middle +1;
+        }else{
+            right = middle;
+        }
+    }
+    return left;
+};
