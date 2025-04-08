@@ -1,0 +1,11 @@
+var singleNumber = function(nums) {
+    const collection = new Set();
+    for(let i=0; i<nums.length; i++){
+        if (collection.has(nums[i])){
+            collection.delete(nums[i]);
+        }else{
+            collection.add(nums[i]);
+        }
+    }
+    return [...collection][0];
+};
