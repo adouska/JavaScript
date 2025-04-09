@@ -1,0 +1,28 @@
+var nextGreaterElement = function(nums1, nums2) {
+    let map = new Map();
+    let stack = [];
+
+    for (let i=0; i<nums2.length; i++){
+        let current = nums2[i];
+        while(current > stack[stack.length-1]){
+            let pop = stack.pop();
+            map.set(pop, current);
+        }
+        map.set(current, -1);
+        if(stack.length==0){
+            map.set(current, -1);
+        }
+        stack.push(current);
+    }
+
+    let ans = [];
+
+    map.set(nums2[nums2.length-1], -1);
+
+    for (let i=0; i<nums1.length; i++){
+        if (map.has(nums1[i])){
+            ans.push(map.get(nums1[i]));
+        }
+    }
+    return ans;
+};
