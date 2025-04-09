@@ -1,0 +1,16 @@
+var findMaxAverage = function(nums, k) {
+    let sum = 0;
+    let max = 0;
+    let windowStart = 0 ;
+
+    for ( let i=0; i<nums.length; i++){ //i is windowEnd
+        sum += nums[i];
+        if (i-windowStart === k-1){ // check we are in valid window
+            let average = sum/k;
+            max = Math.max(max,average);
+            sum -= nums[windowStart]; //remove first element of sum
+            windowStart++;
+        }
+    }
+    return max;
+};
