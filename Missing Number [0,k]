@@ -1,0 +1,21 @@
+const missingNum = function(words){
+    let unique = new Set();
+    let x = Math.max(...words);
+    for (i=0; i<x; i++){
+        unique.add(i);
+    }
+    for (i=0; i<words.length; i++){
+        if (unique.has(words[i])){
+            unique.delete(words[i]);
+        }
+    }
+    if (unique.size > 0){
+        return unique.values().next().value;
+    }else{
+        return x+1;
+    }
+};
+
+// Example usage:
+console.log(missingNum([2,0,1,4])); // Output: 3
+console.log(missingNum([0,2,1,3])); // Output: 4
