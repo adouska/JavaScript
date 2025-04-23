@@ -1,5 +1,5 @@
-// TIME: O (n^2)
-// SPACE: O(1)
+// TIME: O(n^2)
+// SPACE: O(n)
 
 isValid(s){
   while (s.includes("()")||s.includes("[]")||s.includes("{}")){
