@@ -1,0 +1,30 @@
+// TIME: O(n)
+// SPACE: O(n)
+
+isValid(s) {
+        s = s.split("")
+        if ((s[0] === "}") || (s[0] ==="]") || (s[0] ===")")){
+            return false;
+        }
+        s = s.join("");
+
+        const stack=[];
+        const hashMap = {
+            ')':'(',
+            ']':'[',
+            '}':'{'
+        };
+
+        for(let char of s){
+            if(hashMap[char]){
+                if (stack.length > 0 && stack[stack.length-1] === hashMap[char]){
+                    stack.pop();
+                }else{
+                    return false;
+                }
+            }else{
+                stack.push(char);
+            }
+        }
+        return stack.length === 0 ;
+    }
