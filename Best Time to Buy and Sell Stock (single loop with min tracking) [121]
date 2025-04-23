@@ -1,3 +1,8 @@
+// Track the lowest price so far (min).
+// At each step, calculate potential profit with current price as the sell day.
+// Update maximumProfit if this profit is higher.
+
+
 var maxProfit = function(prices) {
     let min = prices[0];
     let maximumProfit = 0;
