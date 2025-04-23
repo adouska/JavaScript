@@ -1,0 +1,21 @@
+// leftPointer: potential buy day
+// rightPointer: potential sell day
+// If price at right is higher than left, calculate profit.
+// If not, move leftPointer to rightPointer (since it's a better price to buy).
+
+maxProfit(prices) {
+        let maxProfit = 0;
+        let rightPointer = 1;
+        let leftPointer = 0;
+
+        while(rightPointer < prices.length){
+            if(prices[leftPointer]<prices[rightPointer]){
+                let profit = prices[rightPointer]-prices[leftPointer];
+                maxProfit = Math.max(maxProfit, profit);
+            }else{
+                leftPointer = rightPointer;
+            }
+            rightPointer++;
+        }
+        return maxProfit;
+    }
