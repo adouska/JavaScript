@@ -2,6 +2,8 @@
 // rightPointer: potential sell day
 // If price at right is higher than left, calculate profit.
 // If not, move leftPointer to rightPointer (since it's a better price to buy).
+// TIME : O(n) 
+// SPACE: O(1)
 
 maxProfit(prices) {
         let maxProfit = 0;
