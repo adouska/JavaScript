@@ -1,0 +1,11 @@
+// TIME: O (n^2)
+// SPACE: O(1)
+
+isValid(s){
+  while (s.includes("()")||s.includes("[]")||s.includes("{}")){
+      s.replace("()","");
+      s.replace("[]","");
+      s.replace("{}","");
+  }
+  return s === "";
+}
