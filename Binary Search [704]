@@ -1,0 +1,15 @@
+// TIME: O(logn)
+// SPACE: O(1)
+var search = function(nums, target) {
+    let right = nums.length-1;
+    let left = 0;
+    while(left < right){
+        let mid = left + Math.floor((right-left+1)/2); //anti gia left+right/2 pou prokalei overflow
+        if(nums[mid]>target){
+            right=mid-1;
+        }else{
+            left=mid;
+        }
+    }
+    return nums[left]===target ? left : -1;
+};
