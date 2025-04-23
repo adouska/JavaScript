@@ -1,6 +1,8 @@
 // Track the lowest price so far (min).
 // At each step, calculate potential profit with current price as the sell day.
 // Update maximumProfit if this profit is higher.
+// TIME: O(n)
+// SPACE: O(1)
 
 
 var maxProfit = function(prices) {
