@@ -1,3 +1,6 @@
+//time O(n)
+//space O(n)
+
 const missingNum = function(words){
     let unique = new Set();
     let x = Math.max(...words);
