@@ -19,6 +19,17 @@ const missingNum = function(words){
     }
 };
 
+//other:
+missingNumber(nums) {
+        const numSet = new Set(nums);
+        const n = nums.length;
+        for (let i = 0; i <= n; i++) {
+            if (!numSet.has(i)) {
+                return i;
+            }
+        }
+    }
+
 // Example usage:
 console.log(missingNum([2,0,1,4])); // Output: 3
 console.log(missingNum([0,2,1,3])); // Output: 4
