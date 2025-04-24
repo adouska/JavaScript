@@ -1,0 +1,13 @@
+// time O(nlogn)
+// space O(1) or O(n) depending on sorting algorithm
+
+missingNumber(nums){
+    let n = nums.length;
+    nums.sort((a, b) => a - b);
+    for (let i = 0; i < n; i++) {
+       if (nums[i] !== i) {
+           return i;
+       }
+    }
+    return n;
+}
