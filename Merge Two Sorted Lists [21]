@@ -2,7 +2,7 @@
 //SPACE: O(1)
 
 mergeTwoLists(list1, list2){
-        const dummy = { val: 0, next: null };
+        const dummy = { val: 0, next: null }; //const dummy = new ListNode();
         let node = dummy;
 
         while (list1 && list2) {
@@ -16,7 +16,7 @@ mergeTwoLists(list1, list2){
             node = node.next;
         }
 
-        if (list1) {
+        if (list1) { // instead of if : node.next = list1 || list2;
             node.next = list1;
         } else {
             node.next = list2;
