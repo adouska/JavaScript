@@ -1,0 +1,22 @@
+// Start with current = head and previous = null.
+// At each step: 1)Save current.next in next.
+//               2)Reverse the pointer: current.next = previous.
+//               3)Move previous and current one step forward.
+// Loop until current becomes null.
+
+// TIME: O(n) [visit each node once]
+// SPACE: O(1) (no extra data structures)
+
+var reverseList = function(head){
+  let current = head;
+  let previous = null;
+  let next = null;
+
+  while(current !== null){
+    next = current.next;
+    current.next = previous;
+    previous = current;
+    current = next;
+  }
+  return previous;
+};
