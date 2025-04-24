@@ -1,0 +1,20 @@
+// Recursively go to the end of the list (head.next).
+// As the call stack unwinds:
+//Point head.next.next back to head.
+//Set head.next = null to avoid cycles.
+
+//TIME: O(n) [1 recursive call/node]
+//SPACE: O(n) [call stack (one frame per node)]
+
+reverseList(head) {
+    if (!head) return null;
+
+    let newHead = head;
+    if (head.next) {
+        newHead = this.reverseList(head.next);
+        head.next.next = head;
+    }
+    head.next = null;
+
+    return newHead;
+}
