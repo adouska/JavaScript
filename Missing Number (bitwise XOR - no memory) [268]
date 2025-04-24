@@ -1,0 +1,10 @@
+//time O (n)
+//space O(1)
+missingNumber(nums){
+  let n = nums.length;
+  let xorr = n;  
+  for (let i = 0; i < n; i++) {
+      xorr ^= i ^ nums[i];
+  }
+  return xorr;
+}
