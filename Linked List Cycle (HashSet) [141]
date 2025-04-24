@@ -1,0 +1,16 @@
+// TIME: O(n)
+// SPACE: O(n)
+
+hasCycle(head){
+  let seen = new Set();
+  let cur = head;
+  
+  while(cur){
+    if(seen.has(cur)){
+      return true;
+    }
+    seen.add(cur);
+    cur = cur.next;
+  }
+  return false;
+}
