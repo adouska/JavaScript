@@ -1,3 +1,6 @@
+// TIME: O(n)
+// SPACE: O(1)
+
 hasCycle(head) {
         let slow=head;
         let fast=head;
