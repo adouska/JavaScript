@@ -1,3 +1,6 @@
+// time O(logn)
+// space O(logn)
+
 var isHappy = function(n) {
     let hashSet = new Set();
 
