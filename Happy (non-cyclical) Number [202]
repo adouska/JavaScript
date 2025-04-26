@@ -1,0 +1,22 @@
+var isHappy = function(n) {
+    let hashSet = new Set();
+
+    while(!hashSet.has(n)){
+        hashSet.add(n);
+        n = sumOfSquares(n);
+        if(n===1){
+            return true;
+        }
+    }
+    return false;     
+};
+var sumOfSquares = function(n){
+    let result = 0;
+    while (n!==0){
+        let digit = n%10;
+        let temp = Math.pow(digit,2);
+        result += temp;
+        n = Math.floor(n/10);
+    }
+    return result;
+}
