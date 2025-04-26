@@ -1,0 +1,25 @@
+// time O(n)
+// space O(1)
+// if there is a cycle slow and fast will eventually meet
+
+var isHappy = function(n) {
+  let slow = n;
+  let fast = this.sumOfSquares(n);
+  while (slow !== fast) {
+    fast = this.sumOfSquares(fast);
+    fast = this.sumOfSquares(fast);
+    slow = this.sumOfSquares(slow);
+  }
+  return fast === 1;
+}
+
+var sumOfSquares = function(n){
+    let result = 0;
+    while (n!==0){
+        let digit = n%10;
+        let temp = Math.pow(digit,2);
+        result += temp;
+        n = Math.floor(n/10);
+    }
+    return result;
+}
