@@ -1,0 +1,13 @@
+//Time complexity:  O((n^2)logn)
+//Space complexity: O(1) or O(n) depending on the sorting algorithm
+
+lastStoneWeight(stones) {
+     while (stones.length > 1) {
+         stones.sort((a, b) => a - b);
+         let cur = stones.pop() - stones.pop();
+         if (cur) {
+             stones.push(cur);
+         }
+     }
+     return stones.length ? stones[0] : 0;
+}
